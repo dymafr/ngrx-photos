@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // modules
 import { LayoutModule } from './share/layout/layout.module';
@@ -28,6 +29,9 @@ import { UserService } from './share/services/user.service';
 // guards
 import { AuthGuard } from './share/guards/auth.guard';
 
+// interceptors
+import { AuthInterceptor } from './share/interceptors/auth.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +50,11 @@ import { AuthGuard } from './share/guards/auth.guard';
     ReactiveFormsModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     AuthService,
     UserService,
     AuthGuard,
