@@ -5,28 +5,8 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
 const RSA_KEY_PRIVATE = fs.readFileSync('./rsa/key');
-const RSA_KEY_PUBLIC = fs.readFileSync('./rsa/key.pub');
+const RSA_PUBLIC_KEY = fs.readFileSync('./rsa/key.pub');
 
-router.get('/refresh-token',(req , res) => {
-  const token = req.headers.authorization;
-  if (token) {
-    jwt.verify(token, RSA_KEY_PUBLIC, (err, decoded) => {
-      if (err) {
-        console.log('err : ', err);
-        res.status(401).json('tooooooken expire');
-      } else {
-        const newToken = jwt.sign({}, RSA_KEY_PRIVATE, {
-          algorithm: 'RS256',
-          expiresIn: '15s',
-          subject: decoded.sub
-        })
-        res.json(newToken);
-      }
-    })
-  } else {
-    res.stats(401).json('no token');
-  }
-})
 
 router.post('/signin', (req, res) => {
   User.findOne({ 'email': req.body.email }).exec( (err, user) => {
@@ -41,6 +21,24 @@ router.post('/signin', (req, res) => {
       res.status(401).json('signin fail !');
     }
   })
+})
+
+router.get('/refresh-token', (req, res) => {
+  const token = req.headers.authorization;
+  if (token) {
+    jwt.verify(token, RSA_PUBLIC_KEY, (err, decoded) => {
+      if (err) { return res.status(403).json('wrong token') }
+      const newToken = jwt.sign({}, RSA_KEY_PRIVATE, {
+        algorithm: 'RS256',
+        expiresIn: '15s',
+        subject: decoded.sub
+      })
+      res.status(200).json(newToken);
+    })
+  } else {
+    res.json(403).json('no token to refresh !');
+  }
+
 })
 
 router.post('/signup', (req, res) => {
