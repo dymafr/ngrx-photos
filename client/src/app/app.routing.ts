@@ -1,13 +1,27 @@
 import { Route } from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { ProfileComponent } from './profile/profile.component';
-import { AuthGuard } from './share/guards/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { PageNotFoundComponent } from './share/layout/page-not-found/page-not-found.component';
 
 export const APP_ROUTING: Route[] = [
-  { path: '', component: HomepageComponent },
-  { path: 'signup', component: SignupComponent},
-  { path: 'signin', component: SigninComponent},
-  { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent }
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'photos'
+  },
+  {
+    path: 'auth',
+    loadChildren: 'app/auth/auth.module#AuthModule'
+  },
+  {
+    path: 'photos',
+    loadChildren: 'app/photos/photos.module#PhotosModule'
+  },
+  {
+    path: 'profile',
+    canActivate: [AuthGuard],
+    loadChildren: 'app/profile/profile.module#ProfileModule'
+  },
+  {
+    path: '**', component: PageNotFoundComponent
+  }
 ];

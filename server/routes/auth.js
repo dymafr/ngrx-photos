@@ -13,10 +13,10 @@ router.post('/signin', (req, res) => {
     if (user && bcrypt.compareSync(req.body.password, user.password)) {
       const token = jwt.sign({}, RSA_KEY_PRIVATE, {
         algorithm: 'RS256',
-        expiresIn: '15s',
+        expiresIn: '1h',
         subject: user._id.toString()
       })
-      res.status(200).json(token);
+      res.status(200).json({ token: token, user: user });
     } else {
       res.status(401).json('signin fail !');
     }
@@ -30,7 +30,7 @@ router.get('/refresh-token', (req, res) => {
       if (err) { return res.status(403).json('wrong token') }
       const newToken = jwt.sign({}, RSA_KEY_PRIVATE, {
         algorithm: 'RS256',
-        expiresIn: '15s',
+        expiresIn: '1h',
         subject: decoded.sub
       })
       res.status(200).json(newToken);

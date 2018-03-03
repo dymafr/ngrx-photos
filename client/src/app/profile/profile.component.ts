@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../share/models/user.model';
-import { UserService } from '../share/services/user.service';
 import { Observable } from 'rxjs/Observable';
+import { Store, select } from '@ngrx/store';
+import { AuthState, getUser } from '../auth/auth.reducers';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +11,13 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  public currentUser: Observable<User>;
+  public currentUser$: Observable<User> = this.store.pipe(
+    select(getUser)
+  );
 
-  constructor(private userService: UserService) { }
+  constructor(private store: Store<AuthState>) { }
 
   ngOnInit() {
-    this.currentUser = this.userService.getCurrentUser();
   }
 
 }

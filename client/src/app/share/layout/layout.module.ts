@@ -1,31 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatCardModule,
-  MatIconModule
- } from '@angular/material';
+import { MaterialModule } from './material.module';
+import { TopbarComponent } from './topbar/topbar.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const MODULE = [
-  FlexLayoutModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatCardModule,
-  MatIconModule
+const COMPONENTS = [
+  TopbarComponent,
+  PageNotFoundComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    ...MODULE
+    RouterModule,
+    FlexLayoutModule,
+    MaterialModule,
   ],
-  exports: MODULE,
-  declarations: []
+  declarations: [
+    ...COMPONENTS
+  ],
+  exports: [
+    FlexLayoutModule,
+    CommonModule,
+    MaterialModule,
+    COMPONENTS
+  ],
 })
 export class LayoutModule { }

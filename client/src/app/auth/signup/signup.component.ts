@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from '../../share/services/auth.service';
+import { AuthService } from '../auth.service';
 import { User } from '../../share/models/user.model';
 import { Router } from '@angular/router';
+import { AuthState } from '../auth.reducers';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+import { TryRegister } from '../auth.actions';
 
 @Component({
   selector: 'app-signup',
@@ -11,12 +16,16 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   public form: FormGroup;
-  public error: string;
+  public error$: Observable<string> = this.store.pipe(
+    select('auth'),
+    map( (state: AuthState) => state.error)
+  );
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private store: Store<AuthState>
   ) { }
 
   ngOnInit() {
@@ -28,11 +37,7 @@ export class SignupComponent implements OnInit {
   }
 
   public submit(): void {
-    this.authService.signup(this.form.value).subscribe( (user: User) => {
-      this.router.navigate(['/signin']);
-    }, err => {
-      this.error = err;
-    });
+    this.store.dispatch(new TryRegister(this.form.value));
   }
 
 }
