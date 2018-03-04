@@ -39,7 +39,9 @@ export function authReducers(state: AuthState = initialState, action: AuthAction
     case AuthActions.SET_TOKEN:
       return {
         ...state,
-        token: action.payload
+        isLoggedin: true,
+        token: action.payload,
+        error: null
       };
     case AuthActions.REGISTER_ERROR:
       return {

@@ -20,14 +20,15 @@ export class AuthEffects {
       if (token) {
         return this.authService.refreshToken(token).pipe(
           map( (newToken: string) => {
-            return new AuthActions.LoginSuccess(newToken);
+            return new AuthActions.SetToken(newToken);
           }),
           catchError( err => {
-            return of(new AuthActions.LoginError(null));
+            console.log('err : ', err);
+            return of();
           })
         );
       } else {
-        return of(new AuthActions.LoginError(null));
+        return of();
       }
     })
   );
