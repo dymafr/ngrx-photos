@@ -50,6 +50,11 @@ export function authReducers(state: AuthState = initialState, action: AuthAction
     case AuthActions.LOGOUT:
       localStorage.removeItem('token');
       return initialState;
+    case AuthActions.SET_CURRENT_USER:
+      return {
+        ...state,
+        user: action.payload
+      };
     default:
       return state;
   }

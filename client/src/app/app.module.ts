@@ -17,7 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { rootReducers } from './redux/app.reducers';
 import { AppEffects } from './redux/app.effects';
 import { metaReducers } from './redux/app.reducers';
-
+import { UserService } from './share/services/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +31,13 @@ import { metaReducers } from './redux/app.reducers';
     RouterModule.forRoot(APP_ROUTING),
     StoreModule.forRoot(rootReducers, { metaReducers }),
     EffectsModule.forRoot([AppEffects]),
-    // StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       name: 'Ngrx Photos !',
       logOnly: environment.production,
     }),
+    StoreRouterConnectingModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

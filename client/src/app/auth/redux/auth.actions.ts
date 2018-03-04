@@ -9,6 +9,7 @@ export const LOGIN_ERROR = 'login_error';
 export const TRY_REGISTER = 'try_register';
 export const REGISTER_SUCCESS = 'register_success';
 export const REGISTER_ERROR = 'register_error';
+export const SET_CURRENT_USER = 'set_current_user';
 export const LOGOUT = 'logout';
 
 export class TryLogin implements Action {
@@ -47,10 +48,14 @@ export class Logout implements Action {
 export class TryRefreshToken implements Action {
   readonly type = TRY_REFRESH_TOKEN;
 }
-
 export class SetToken implements Action {
   readonly type = SET_TOKEN;
   constructor(public payload: string) {}
+}
+
+export class SetCurrentUser implements Action {
+  readonly type = SET_CURRENT_USER;
+  constructor(public payload: User) {}
 }
 
 export type AuthActionType = TryLogin |
@@ -61,5 +66,6 @@ export type AuthActionType = TryLogin |
                              RegisterError |
                              TryRefreshToken |
                              SetToken |
+                             SetCurrentUser |
                              Logout;
 

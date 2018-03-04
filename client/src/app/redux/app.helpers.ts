@@ -1,4 +1,5 @@
-export function firstSegement(stuff) {
-  console.log(stuff);
-  return stuff;
+import { Action } from '@ngrx/store';
+
+export function parseUrl(action) {
+  return action.payload.routerState.url;
 }
