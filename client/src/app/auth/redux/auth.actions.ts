@@ -1,7 +1,8 @@
 import { Action } from '@ngrx/store';
-import { User } from '../share/models/user.model';
+import { User } from '../../share/models/user.model';
 
-export const INIT_AUTH_STATE = 'init_auth_state';
+export const TRY_REFRESH_TOKEN = 'init_auth_state';
+export const SET_TOKEN = 'set_token';
 export const TRY_LOGIN = 'try_login';
 export const LOGIN_SUCCESS = 'login_success';
 export const LOGIN_ERROR = 'login_error';
@@ -17,7 +18,7 @@ export class TryLogin implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
-  constructor(public payload: { token: string, user: User}) {}
+  constructor(public payload: string) {}
 }
 
 export class LoginError implements Action {
@@ -43,8 +44,13 @@ export class Logout implements Action {
   readonly type = LOGOUT;
 }
 
-export class InitAuthState implements Action {
-  readonly type = INIT_AUTH_STATE;
+export class TryRefreshToken implements Action {
+  readonly type = TRY_REFRESH_TOKEN;
+}
+
+export class SetToken implements Action {
+  readonly type = SET_TOKEN;
+  constructor(public payload: string) {}
 }
 
 export type AuthActionType = TryLogin |
@@ -53,6 +59,7 @@ export type AuthActionType = TryLogin |
                              TryRegister |
                              RegisterSuccess |
                              RegisterError |
-                             InitAuthState |
+                             TryRefreshToken |
+                             SetToken |
                              Logout;
 

@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '../../../auth/services/auth.service';
 import { JwtToken } from '../../models/jwt-token.model';
 import { Subscription } from 'rxjs/Subscription';
 import { Store, select } from '@ngrx/store';
-import { AuthState } from '../../../auth/auth.reducers';
-import { Logout } from '../../../auth/auth.actions';
+import { AuthState } from '../../../auth/redux/auth.reducers';
+import { Logout } from '../../../auth/redux/auth.actions';
 
 @Component({
   selector: 'app-topbar',
@@ -22,7 +22,6 @@ export class TopbarComponent implements OnInit {
 
   public logout(): void {
     this.store.dispatch(new Logout());
-    // this.authService.logout();
   }
 
 

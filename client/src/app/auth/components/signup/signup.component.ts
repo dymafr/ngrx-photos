@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { User } from '../../share/models/user.model';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../../share/models/user.model';
 import { Router } from '@angular/router';
-import { AuthState } from '../auth.reducers';
+import { AuthState } from '../../redux/auth.reducers';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import { TryRegister } from '../auth.actions';
+import { TryRegister } from '../../redux/auth.actions';
 
 @Component({
   selector: 'app-signup',

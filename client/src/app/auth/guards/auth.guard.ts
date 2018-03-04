@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { AuthService } from './auth.service';
-import { JwtToken } from '../share/models/jwt-token.model';
+import { AuthService } from '../services/auth.service';
 import { map } from 'rxjs/operators/map';
-import { AuthState } from './auth.reducers';
+import { AuthState } from '../redux/auth.reducers';
 import { Store, select } from '@ngrx/store';
 import { take } from 'rxjs/operators';
 

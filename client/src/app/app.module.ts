@@ -14,9 +14,9 @@ import { AppComponent } from './app.component';
 import { APP_ROUTING } from './app.routing';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { rootReducers } from './app.reducers';
-import { AppEffects } from './app.effects';
-import { metaReducers } from './app.reducers';
+import { rootReducers } from './redux/app.reducers';
+import { AppEffects } from './redux/app.effects';
+import { metaReducers } from './redux/app.reducers';
 
 @NgModule({
   declarations: [

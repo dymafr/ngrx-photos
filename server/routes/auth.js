@@ -16,7 +16,7 @@ router.post('/signin', (req, res) => {
         expiresIn: '1h',
         subject: user._id.toString()
       })
-      res.status(200).json({ token: token, user: user });
+      res.status(200).json(token);
     } else {
       res.status(401).json('signin fail !');
     }
@@ -24,7 +24,8 @@ router.post('/signin', (req, res) => {
 })
 
 router.get('/refresh-token', (req, res) => {
-  const token = req.headers.authorization;
+  const token = req.query.token || req.headers.authorization;
+  console.log(token);
   if (token) {
     jwt.verify(token, RSA_PUBLIC_KEY, (err, decoded) => {
       if (err) { return res.status(403).json('wrong token') }

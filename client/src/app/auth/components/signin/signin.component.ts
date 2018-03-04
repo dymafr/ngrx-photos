@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Store, select } from '@ngrx/store';
-import { AuthState } from '../auth.reducers';
-import { TryLogin } from '../auth.actions';
+import { AuthState } from '../../redux/auth.reducers';
+import { TryLogin } from '../../redux/auth.actions';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 

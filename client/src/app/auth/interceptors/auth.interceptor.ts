@@ -1,7 +1,7 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { Store, select } from "@ngrx/store";
-import { AuthState } from "./auth.reducers";
+import { AuthState } from "../redux/auth.reducers";
 import { map, take, switchMap } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 

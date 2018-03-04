@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../share/models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
-import { AuthState, getUser } from '../auth/auth.reducers';
+import { AuthState } from '../auth/redux/auth.reducers';
+import { getUser } from '../auth/redux/auth.helpers';
 import { map } from 'rxjs/operators';
 
 @Component({

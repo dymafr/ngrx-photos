@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from '../share/layout/layout.module';
-
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-
-import { AUTH_ROUTING } from './auth.routing';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
-
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { authReducers } from './auth.reducers';
-import { AuthEffects } from './auth.effects';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
+
+import { LayoutModule } from '../share/layout/layout.module';
+import { AUTH_ROUTING } from './auth.routing';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+
+import { authReducers } from './redux/auth.reducers';
+import { AuthEffects } from './redux/auth.effects';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   imports: [
