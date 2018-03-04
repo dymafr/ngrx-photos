@@ -1,15 +1,9 @@
 import { Injectable  } from '@angular/core';
-import { User } from '../../share/models/user.model';
+import { User } from '../../shared/models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { JwtToken } from '../../share/models/jwt-token.model';
-import { tap } from 'rxjs/operators/tap';
-import { switchMap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { timer } from 'rxjs/observable/timer';
-import { of } from 'rxjs/observable/of';
-import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthState } from '../redux/auth.reducers';
 import { TryRefreshToken } from '../redux/auth.actions';
@@ -19,7 +13,6 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router,
     private store: Store<AuthState>
   ) {
   }

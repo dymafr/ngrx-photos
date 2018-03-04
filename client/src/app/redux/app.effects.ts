@@ -1,10 +1,10 @@
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
-import { tap, map, switchMap, catchError } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
 import { parseUrl } from './app.helpers';
-import { UserService } from '../share/services/user.service';
-import { User } from '../share/models/user.model';
+import { UserService } from '../shared/services/user.service';
+import { User } from '../shared/models/user.model';
 import { SetCurrentUser } from '../auth/redux/auth.actions';
 import { of } from 'rxjs/observable/of';
 

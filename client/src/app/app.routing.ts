@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 import { AuthGuard } from './auth/guards/auth.guard';
-import { PageNotFoundComponent } from './share/layout/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/layout/page-not-found/page-not-found.component';
 
 export const APP_ROUTING: Route[] = [
   {

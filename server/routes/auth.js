@@ -15,13 +15,13 @@ router.post('/signin', (req, res) => {
         algorithm: 'RS256',
         expiresIn: '1h',
         subject: user._id.toString()
-      })
+      });
       res.status(200).json(token);
     } else {
       res.status(401).json('signin fail !');
     }
   })
-})
+});
 
 router.get('/refresh-token', (req, res) => {
   const token = req.query.token || req.headers.authorization;
@@ -40,7 +40,7 @@ router.get('/refresh-token', (req, res) => {
     res.status(403).json('no token to refresh !');
   }
 
-})
+});
 
 router.post('/signup', (req, res) => {
   const newUser = new User({
@@ -54,7 +54,7 @@ router.post('/signup', (req, res) => {
     res.status(200).json('signup ok !');
   })
 
-})
+});
 
 
 

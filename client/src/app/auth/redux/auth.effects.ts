@@ -3,8 +3,7 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { AuthService } from "../services/auth.service";
 import { Router } from '@angular/router';
 import * as AuthActions from './auth.actions';
-import { map, switchMap, catchError, tap, share } from 'rxjs/operators';
-import { User } from "../../share/models/user.model";
+import { map, switchMap, catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { HttpErrorResponse } from "@angular/common/http";
 import { Subscription } from "rxjs/Subscription";
@@ -19,7 +18,6 @@ export class AuthEffects {
     switchMap( () => {
       const token = localStorage.getItem('token');
       if (token) {
-        localStorage.removeItem('token');
         return this.authService.refreshToken(token).pipe(
           map( (newToken: string) => {
             return new AuthActions.LoginSuccess(newToken);
@@ -51,7 +49,7 @@ export class AuthEffects {
   );
 
   @Effect()
-  TryRegister$ = this.actions$.pipe(
+  tryRegister$ = this.actions$.pipe(
     ofType(AuthActions.TRY_REGISTER),
     map( (action: AuthActions.TryRegister) => action.payload),
     switchMap( (auth: { email: string, name: string, password: string }) => {
@@ -68,7 +66,7 @@ export class AuthEffects {
   loginSuccess$ = this.actions$.pipe(
     ofType(AuthActions.LOGIN_SUCCESS),
     tap(() => {
-      this.subscription.add(this.authService.initTimer().pipe(share()).subscribe());
+      this.subscription.add(this.authService.initTimer().subscribe());
       this.router.navigate(['/']);
     })
   );

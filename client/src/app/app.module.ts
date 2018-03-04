@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { LayoutModule } from './share/layout/layout.module';
+import { LayoutModule } from './shared/layout/layout.module';
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTING } from './app.routing';
@@ -17,7 +17,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { rootReducers } from './redux/app.reducers';
 import { AppEffects } from './redux/app.effects';
 import { metaReducers } from './redux/app.reducers';
-import { UserService } from './share/services/user.service';
+import { UserService } from './shared/services/user.service';
 @NgModule({
   declarations: [
     AppComponent,

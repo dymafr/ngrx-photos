@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
-import { User } from '../../share/models/user.model';
+import { User } from '../../shared/models/user.model';
 
-export const TRY_REFRESH_TOKEN = 'init_auth_state';
+export const TRY_REFRESH_TOKEN = 'try_refresh_token';
 export const SET_TOKEN = 'set_token';
 export const TRY_LOGIN = 'try_login';
 export const LOGIN_SUCCESS = 'login_success';

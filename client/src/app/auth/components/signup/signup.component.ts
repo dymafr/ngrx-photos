@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../../share/models/user.model';
+import { User } from '../../../shared/models/user.model';
 import { Router } from '@angular/router';
 import { AuthState } from '../../redux/auth.reducers';
 import { Store, select } from '@ngrx/store';

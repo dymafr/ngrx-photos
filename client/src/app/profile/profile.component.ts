@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../share/models/user.model';
+import { User } from '../shared/models/user.model';
 import { Observable } from 'rxjs/Observable';
 import { Store, select } from '@ngrx/store';
 import { AuthState } from '../auth/redux/auth.reducers';

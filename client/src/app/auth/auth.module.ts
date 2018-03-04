@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { LayoutModule } from '../share/layout/layout.module';
+import { LayoutModule } from '../shared/layout/layout.module';
 import { AUTH_ROUTING } from './auth.routing';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';

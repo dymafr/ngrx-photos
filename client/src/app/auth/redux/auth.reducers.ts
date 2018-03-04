@@ -1,6 +1,5 @@
 import * as AuthActions from './auth.actions';
-import { User } from '../../share/models/user.model';
-import { createFeatureSelector, createSelector, MetaReducer, ActionReducer } from '@ngrx/store';
+import { User } from '../../shared/models/user.model';
 import * as AuthHelper from './auth.helpers';
 
 export interface AuthState {
