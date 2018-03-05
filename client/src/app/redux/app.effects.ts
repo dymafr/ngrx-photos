@@ -6,7 +6,8 @@ import { parseUrl } from './app.helpers';
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user.model';
 import { SetCurrentUser } from '../auth/redux/auth.actions';
-import { of } from 'rxjs/observable/of';
+import { empty } from 'rxjs/observable/empty';
+import { SET_FILTER, SearchPhotos } from '../photos/redux/photos.actions';
 
 @Injectable()
 export class AppEffects {
@@ -22,12 +23,20 @@ export class AppEffects {
           }),
           catchError( err => {
             console.log('err : ', err);
-            return of();
+            return empty();
           })
         );
       } else {
-        return of();
+        return empty();
       }
+    })
+  );
+
+  @Effect()
+  setFilter$ = this.actions$.pipe(
+    ofType(SET_FILTER),
+    map( () => {
+      return new SearchPhotos();
     })
   );
 

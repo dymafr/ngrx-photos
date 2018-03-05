@@ -1,5 +1,9 @@
-<mat-toolbar *ngIf="isLoggedIn$ | async;let isLoggedin" color="primary" fxLayoutGap="15px">
+<mat-toolbar *ngIf="isLoggedIn$ | async;let isLoggedin" color="primary" fxLayoutGap="20px">
   <span class="link" routerLink="/">Mon logo</span>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <input class="header-input" #filter type="text" placeholder="rechercher" />
+    <mat-icon class="clickable" (click)="search()">search</mat-icon>
+  </div>
   <span fxFlex="auto"></span>
   <span *ngIf="!isLoggedin.isLoggedin" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" >
     <span class="link" routerLink="/auth/signin" >Connexion</span>

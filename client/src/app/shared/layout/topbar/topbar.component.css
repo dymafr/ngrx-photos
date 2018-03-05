@@ -1,0 +1,16 @@
+.header-input {
+  padding:0px 15px;
+  border-radius: 3px;
+  border:0px;
+  outline: 0;
+  font-size: 14px;
+}
+
+::placeholder {
+  font-size: 14px;
+  color:black;
+}
+
+.clickable {
+  cursor: pointer;
+}

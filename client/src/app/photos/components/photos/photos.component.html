@@ -1,0 +1,3 @@
+<div class="p-15" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="15px">
+  <img  class="mb-15" [src]="photo.urls.small" *ngFor="let photo of (photos$ | async)"/>
+</div>

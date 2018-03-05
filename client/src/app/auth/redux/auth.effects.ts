@@ -23,6 +23,7 @@ export class AuthEffects {
             return new AuthActions.SetToken(newToken);
           }),
           catchError( err => {
+            localStorage.removeItem('token');
             console.log('err : ', err);
             return of();
           })
