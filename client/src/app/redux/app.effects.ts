@@ -7,6 +7,7 @@ import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/user.model';
 import { SetCurrentUser } from '../auth/redux/auth.actions';
 import { empty } from 'rxjs/observable/empty';
+import { of } from 'rxjs/observable/of';
 import { SET_FILTER, SearchPhotos } from '../photos/redux/photos.actions';
 
 @Injectable()
@@ -15,17 +16,19 @@ export class AppEffects {
   routerAction$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
     map(parseUrl),
-    switchMap( (url: string) => {
+    switchMap((url: string) => {
       if (url === '/profile') {
         return this.userService.getCurrentUser().pipe(
-          map( (user: User) => {
+          map((user: User) => {
             return new SetCurrentUser(user);
           }),
-          catchError( err => {
+          catchError(err => {
             console.log('err : ', err);
             return empty();
           })
         );
+      } else if (url === '/photos') {
+        return of(new SearchPhotos());
       } else {
         return empty();
       }
@@ -35,7 +38,7 @@ export class AppEffects {
   @Effect()
   setFilter$ = this.actions$.pipe(
     ofType(SET_FILTER),
-    map( () => {
+    map(() => {
       return new SearchPhotos();
     })
   );
@@ -43,6 +46,6 @@ export class AppEffects {
   constructor(
     private actions$: Actions,
     private userService: UserService,
-  ) {}
+  ) { }
 
 }

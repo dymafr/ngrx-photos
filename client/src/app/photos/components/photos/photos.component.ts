@@ -19,8 +19,6 @@ export class PhotosComponent implements OnInit {
 
   constructor(private store: Store<PhotosState>) { }
 
-  ngOnInit() {
-    this.store.dispatch(new SearchPhotos());
-  }
+  ngOnInit() {}
 
 }
