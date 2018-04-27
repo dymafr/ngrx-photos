@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { PhotosComponent } from './components/photos/photos.component';
 import { PHOTOS_ROUTING } from './photos.routing';
 import { RouterModule } from '@angular/router';
-import { PhotosService } from './services/photos.service';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { PhotosEffects} from './redux/photos.effects';
-import { photosReducers } from './redux/photos.reducers';
-import { LayoutModule } from '../shared/layout/layout.module';
+import { PhotosService } from '../shared/services/photos.service';
+import { PhotosEffects } from './shared/store/effects';
+import { photosReducers } from './shared/store/reducers';
+import { LayoutModule } from '../shared/modules/layout.module';
 
 @NgModule({
   imports: [

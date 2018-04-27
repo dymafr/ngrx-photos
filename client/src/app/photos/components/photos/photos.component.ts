@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { PhotosState } from '../../redux/photos.reducers';
-import { SearchPhotos } from '../../redux/photos.actions';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { Photo } from '../../../shared/models/photo.model';
+import { PhotosState } from '../../shared/store/reducers';
 
 @Component({
   selector: 'app-photos',

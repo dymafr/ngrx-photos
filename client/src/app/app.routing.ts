@@ -1,6 +1,8 @@
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { Route } from '@angular/router';
-import { AuthGuard } from './auth/guards/auth.guard';
-import { PageNotFoundComponent } from './shared/layout/page-not-found/page-not-found.component';
 
 export const APP_ROUTING: Route[] = [
   {
@@ -9,8 +11,12 @@ export const APP_ROUTING: Route[] = [
     redirectTo: 'photos'
   },
   {
-    path: 'auth',
-    loadChildren: 'app/auth/auth.module#AuthModule'
+    path: 'signup',
+    component: SignupComponent
+  },
+  {
+    path: 'signin',
+    component: SigninComponent
   },
   {
     path: 'photos',

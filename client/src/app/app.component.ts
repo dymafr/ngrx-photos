@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AuthState } from './auth/redux/auth.reducers';
-import { TryRefreshToken } from './auth/redux/auth.actions';
+import { State } from './shared/store';
+import { TryRefreshToken } from './shared/store/actions';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent {
-
-  constructor(private store: Store<AuthState>) {
+  constructor(private store: Store<State>) {
     this.store.dispatch(new TryRefreshToken());
   }
 }

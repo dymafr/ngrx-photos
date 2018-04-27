@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { LayoutModule } from '../shared/layout/layout.module';
+import { LayoutModule } from '../shared/modules/layout.module';
 import { RouterModule } from '@angular/router';
 import { PROFILE_ROUTING } from './profile.routing';
 import { ProfileComponent } from './profile.component';
