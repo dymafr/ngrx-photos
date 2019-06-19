@@ -1,7 +1,5 @@
-import { Action } from "rxjs/scheduler/Action";
 import { PhotosActionType, SEARCH_COMPLETE, SET_FILTER } from "../actions";
 import { Photo } from '../../../../shared/models/photo.model';
-import { State } from "../../../../shared/store";
 
 export interface PhotosState {
   photos: Photo[];

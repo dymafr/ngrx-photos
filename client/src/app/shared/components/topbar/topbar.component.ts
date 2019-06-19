@@ -14,7 +14,7 @@ export class TopbarComponent implements OnInit {
     select('auth')
   );
 
-  @ViewChild('filter') public el: ElementRef;
+  @ViewChild('filter', {static: false}) public el: ElementRef;
 
   constructor(private store: Store<State>) { }
 
@@ -25,6 +25,7 @@ export class TopbarComponent implements OnInit {
   }
 
   public search(): void {
+    console.log(this.el.nativeElement.value)
     this.store.dispatch(new SetFilter(this.el.nativeElement.value));
     this.store.dispatch(new SearchPhotos());
   }

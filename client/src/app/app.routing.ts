@@ -20,12 +20,12 @@ export const APP_ROUTING: Route[] = [
   },
   {
     path: 'photos',
-    loadChildren: 'app/photos/photos.module#PhotosModule'
+    loadChildren: () => import('app/photos/photos.module').then(m => m.PhotosModule)
   },
   {
     path: 'profile',
     canActivate: [AuthGuard],
-    loadChildren: 'app/profile/profile.module#ProfileModule'
+    loadChildren: () => import('app/profile/profile.module').then(m => m.ProfileModule)
   },
   {
     path: '**', component: PageNotFoundComponent

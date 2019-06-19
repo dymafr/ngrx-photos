@@ -4,7 +4,7 @@ import { User } from '../../models/user.model';
 export interface AuthState {
   isLoggedin: boolean;
   token: string;
-  error: string;
+  error: string | null;
   user: User;
 }
 
